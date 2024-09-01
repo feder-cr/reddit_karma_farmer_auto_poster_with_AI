@@ -1,20 +1,19 @@
-<div style="text-align: center;">
-    <img src="https://i.postimg.cc/XGdDt5tP/linkedin-aihawk.png" alt="AIhawk">
+<div align="center">
+    <img src="https://i.postimg.cc/XGdDt5tP/linkedin-aihawk.png" alt="AIhawk" />
 </div>
 
-<div style="text-align: center;">
+<div align="center">
+    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/federico-elia-5199951b6/)
+    [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:federico.elia.majo@gmail.com)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/federico-elia-5199951b6/)
-[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:federico.elia.majo@gmail.com)
-
-# Reddit_Poster_AIHawk
-
+    # Reddit_Poster_AIHawk
 </div>
+
 <br />
 
-<!-- Message Clarity -->
-<div style="text-align: center;">
-## 🚀 Join the AIHawk Community 🚀 
+<div align="center">
+
+## 🚀 Join the AIHawk Community 🚀
 
 Connect with like-minded individuals and get the most out of AIHawk.
 
@@ -26,12 +25,9 @@ Connect with like-minded individuals and get the most out of AIHawk.
 
 🔔 **Stay updated:** Get the latest news and updates on AIHawk.
 
-<!-- Strong Call to Action -->
 ### Join Now 👇
-
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/AIhawkCommunity)
 </div>
-
 
 
 
