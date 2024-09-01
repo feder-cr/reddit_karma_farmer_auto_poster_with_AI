@@ -11,7 +11,7 @@ class GeneratorPostGPT:
         return template_string
 
     def determine_best_prompt(self, source_subreddit: str, summary: str, rules: str) -> int:
-        prompt = f"""
+        prompt = """
         Based on the following summary of the top 10 posts from r/{source_subreddit} and the subreddit rules, provide the number corresponding to the best type of post to generate for maximum upvotes:
 
         1. Extremely clickbait with a very short body.
@@ -43,7 +43,6 @@ class GeneratorPostGPT:
 
         if random.random() < 0.5:
             best_prompt_number = random.randint(1, 6)
-        print(best_prompt_number)
         return best_prompt_number
 
     def generate_post(self, source_subreddit: str, summary: str, rules: str) -> str:

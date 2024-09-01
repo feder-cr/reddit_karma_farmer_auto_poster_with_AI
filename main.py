@@ -88,7 +88,6 @@ def get_subreddit_rules(subreddit_name: str) -> str:
         print(f"An error occurred while fetching rules for r/{subreddit_name}: {e}")
         return ""
  
-
 def main():
     trending_subreddits = list(reddit.subreddits.popular(limit=5000))
     shuffle(trending_subreddits)
