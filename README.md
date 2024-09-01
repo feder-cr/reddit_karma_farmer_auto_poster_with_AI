@@ -1,4 +1,4 @@
-# Reddit_Post_AIHawk
+# Reddit_Poster_AIHawk
 
 ## Table of Contents
 - [Introduction](#introduction)
