@@ -1,17 +1,17 @@
 <div align="center">
     <img src="https://i.postimg.cc/XGdDt5tP/linkedin-aihawk.png" alt="AIhawk" />
-</div>
 
-<div align="center">
-    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/federico-elia-5199951b6/)
-    [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:federico.elia.majo@gmail.com)
 
-    # Reddit_Poster_AIHawk
-</div>
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/federico-elia-5199951b6/)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:federico.elia.majo@gmail.com)
+
+# Reddit_Poster_AIHawk
+
 
 <br />
 
-<div align="center">
+
 
 ## 🚀 Join the AIHawk Community 🚀
 
