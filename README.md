@@ -48,14 +48,6 @@ To set up and use the Reddit Post Generator, follow these steps:
    ```
 
 
-
-## Configuration
-
-Ensure you have the following configuration files in place:
-Certainly! Here’s the updated section of your README file that includes information about the `config_secrets.py` file for configuration:
-
----
-
 ## Configuration
 
 To generate Reddit API keys, follow these steps:
