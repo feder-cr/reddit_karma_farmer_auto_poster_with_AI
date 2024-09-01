@@ -1,4 +1,6 @@
-<img src="https://i.postimg.cc/XGdDt5tP/linkedin-aihawk.png" alt="Aihawk">
+<div style="text-align: center;">
+    <img src="https://i.postimg.cc/XGdDt5tP/linkedin-aihawk.png" alt="AIhawk">
+</div>
 
 
 <!-- At first glance, the branding and messaging clearly conveys what to expect -->
