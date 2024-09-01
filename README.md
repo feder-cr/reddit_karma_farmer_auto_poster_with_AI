@@ -30,8 +30,8 @@ To set up and use the Reddit Post Generator, follow these steps:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/reddit-post-generator.git
-   cd reddit-post-generator
+   git clone https://github.com/feder-cr/reddit_karma_farmer_auto_poster_with_AI.git
+   cd reddit_karma_farmer_auto_poster_with_AI
    ```
 
 2. **Create a Virtual Environment (optional but recommended)**
