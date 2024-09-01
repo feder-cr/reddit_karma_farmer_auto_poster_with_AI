@@ -11,15 +11,12 @@ import re
 warnings.filterwarnings("ignore")
 
 reddit = praw.Reddit(
-    client_id=REDDIT_CLIENT_ID,
-    client_secret=REDDIT_CLIENT_SECRET,
-    username=REDDIT_USERNAME,
-    password=REDDIT_PASSWORD,
-    user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+client_id=REDDIT_CLIENT_ID,
+client_secret=REDDIT_CLIENT_SECRET,
+username=REDDIT_USERNAME,
+password=REDDIT_PASSWORD,
+user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
 )
-trending_subreddits = list(reddit.subreddits.popular(limit=5000))
-shuffle(trending_subreddits)
-generator_post = GeneratorPostGPT(openai_api_key=OPENAI_API_KEY)
 
 def clean_text(text: str) -> str:
     text = text.replace('Title:', '').replace('Body:', '').replace('"', '').replace('*', '').strip()
@@ -90,45 +87,54 @@ def get_subreddit_rules(subreddit_name: str) -> str:
     except Exception as e:
         print(f"An error occurred while fetching rules for r/{subreddit_name}: {e}")
         return ""
-for subreddit in trending_subreddits:
-    source_subreddit = subreddit.display_name
-    print(f"Processing subreddit: {source_subreddit}")
-    if has_posted_recently(source_subreddit):
-        print(f"Skipping subreddit {source_subreddit} because a post was made in the last 24 hours.")
-        continue
-    if not can_post_to_subreddit(source_subreddit):
-        print(f"Skipping subreddit {source_subreddit} because we are not allowed to post.")
-        continue
-    try:
-        top_posts = reddit.subreddit(source_subreddit).top("day", limit=10)
-        post_titles = "\n".join([f"- {post.title}" for post in top_posts])
-        subreddit_rules = get_subreddit_rules(source_subreddit)
-        innovative_post = generator_post.generate_post(source_subreddit, post_titles, rules=subreddit_rules)
-        if innovative_post:
-            try:
-                title, body = extract_title_body(innovative_post)
-                title = clean_text(title)
-                body = clean_text(body)
-                if title and body:
-                    if not try_post(source_subreddit, title, body):
-                        print(f"Failed to post in r/{source_subreddit}. Skipping.")
-                        continue
-                else:
-                    print(f"Generated post for r/{source_subreddit} is empty. Skipping.")
-                    continue
-            except ValueError:
-                print(f"Invalid post format for r/{source_subreddit}. Skipping.")
-                continue
-            except Exception:
-                print(f"Invalid post format for r/{source_subreddit}. Skipping.")
-                continue
-        else:
-            print(f"Failed to generate post for r/{source_subreddit}. Skipping.")
+ 
+
+def main():
+    trending_subreddits = list(reddit.subreddits.popular(limit=5000))
+    shuffle(trending_subreddits)
+    generator_post = GeneratorPostGPT(openai_api_key=OPENAI_API_KEY)
+    for subreddit in trending_subreddits:
+        source_subreddit = subreddit.display_name
+        print(f"Processing subreddit: {source_subreddit}")
+        if has_posted_recently(source_subreddit):
+            print(f"Skipping subreddit {source_subreddit} because a post was made in the last 24 hours.")
             continue
-    except RedditAPIException as e:
-        if e.error_type == "RATELIMIT":
-            sleep(int(e.message.split(" ")[-5]) * 60)
-        continue
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}. Skipping subreddit r/{source_subreddit}.")
-        continue
+        if not can_post_to_subreddit(source_subreddit):
+            print(f"Skipping subreddit {source_subreddit} because we are not allowed to post.")
+            continue
+        try:
+            top_posts = reddit.subreddit(source_subreddit).top("day", limit=10)
+            post_titles = "\n".join([f"- {post.title}" for post in top_posts])
+            subreddit_rules = get_subreddit_rules(source_subreddit)
+            innovative_post = generator_post.generate_post(source_subreddit, post_titles, rules=subreddit_rules)
+            if innovative_post:
+                try:
+                    title, body = extract_title_body(innovative_post)
+                    title = clean_text(title)
+                    body = clean_text(body)
+                    if title and body:
+                        if not try_post(source_subreddit, title, body):
+                            print(f"Failed to post in r/{source_subreddit}. Skipping.")
+                            continue
+                    else:
+                        print(f"Generated post for r/{source_subreddit} is empty. Skipping.")
+                        continue
+                except ValueError:
+                    print(f"Invalid post format for r/{source_subreddit}. Skipping.")
+                    continue
+                except Exception:
+                    print(f"Invalid post format for r/{source_subreddit}. Skipping.")
+                    continue
+            else:
+                print(f"Failed to generate post for r/{source_subreddit}. Skipping.")
+                continue
+        except RedditAPIException as e:
+            if e.error_type == "RATELIMIT":
+                sleep(int(e.message.split(" ")[-5]) * 60)
+            continue
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}. Skipping subreddit r/{source_subreddit}.")
+            continue
+
+if __name__ == "__main__":
+    main()
